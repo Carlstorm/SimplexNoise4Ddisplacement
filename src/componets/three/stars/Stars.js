@@ -4,17 +4,22 @@ import { BufferGeometry, MeshToonMaterial, PlaneGeometry, Vector3 } from 'three'
 import * as THREE from 'three';
 import star from '../../../assets/textures/star.png'
 
+import MusicHandler from '../../../functions/MusicHandler';
 
-export default function Stars(props) {
-
-    const {musicData} = props;
-
+let starsData = []
+export default function Stars({musicData, songCurrentTime, soundRef}) {
+    let g, pos
     const count = 300
     const mesh = useRef()
-
+    const texloader = new THREE.TextureLoader();
+    const standard = texloader.load(star)
     let v3 = new THREE.Vector3()
 
-    let starsData = []
+    const initStars = () => {
+      if (!mesh.current) return
+        g = mesh.current.geometry
+        pos = g.attributes.position;
+    }
 
     const stars = useMemo(() => {
         for (let i = 0; i<count; i++) {
@@ -26,16 +31,6 @@ export default function Stars(props) {
           let posYdiff = maxdist-Math.abs(randomposY)
           randomposX = randomposX > 0 ? randomposX+posYdiff : randomposX-posYdiff
           randomposY = randomposY > 0 ? randomposY+posXdiff : randomposY-posXdiff
-          // if (randomposX > 0 && randomposX < 5)
-          //   randomposX+=5
-          // else if (randomposX < 0 && randomposX > -5)
-          //   randomposX-=5
-
-
-          // if (randomposY > 0 && randomposY < 5)
-          //   randomposY+=5
-          // else if (randomposY < 0 && randomposY > -5)
-          //   randomposY-=5
 
           let randomposZ = (Math.random()*-120)
 
@@ -47,27 +42,15 @@ export default function Stars(props) {
             show: randomposZ < (-100/2)
           })
         }
+
         return new THREE.BufferAttribute(new Float32Array(starsData.flatMap(v => [v.x, v.y, v.z])), 3);
-    }, [count, musicData]);
-
-    let g, pos
-    useEffect(() => {
-        if (!mesh.current) return
-
-        g = mesh.current.geometry
-        pos = g.attributes.position;
-        console.log(pos)
-    },[mesh.current])
-
-
-    const texloader = new THREE.TextureLoader();
-    const standard = texloader.load(star)
-
+    }, []);
 
     useFrame((state, delta) => {
-        if (!g)
-            return
-
+        if (!g) {
+          initStars()
+          return
+        }        
           starsData.forEach((p, idx) => {
             v3.fromBufferAttribute(pos, idx)
             if (v3.z > 20) {
@@ -76,7 +59,8 @@ export default function Stars(props) {
               v3.y = starsData[idx].y
               starsData[idx].show = true
             }
-            v3.z += starsData[idx].acc
+
+            v3.z += starsData[idx].acc*(1+(MusicHandler.value(musicData, soundRef)*7.5))
 
             pos.setXYZ(idx, v3.x, v3.y, v3.z)
         });
@@ -89,10 +73,10 @@ export default function Stars(props) {
         <bufferAttribute attach={"attributes-position"} {...stars} />
       </bufferGeometry>
       <pointsMaterial
-        size={1}
+        size={0.5}
         transparent="true"
-        color="#004770"
-        opacity={1}
+        color="white"
+        opacity={0.5}
         map={standard}
       />
     </points>

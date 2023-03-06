@@ -1,19 +1,21 @@
+import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 
-export default function AudioWave({setMusicData, musicData}) {
+export default function AudioWave({setMusicData, musicData, setSongCurrentTime, soundRef}) {
     const margin = 10;
     const chunkSize = 50;
 
 
     const inputRef = useRef(null)
     const canvasRef = useRef(null)
-    const soundRef = useRef(null)
+    // const soundRef = useRef(null)
 
 
 
     useEffect(() => {
         if (musicData.sound) {
             soundRef.current.play()
+            setSongCurrentTime(0)
         }
     },[musicData])
 
@@ -56,12 +58,20 @@ export default function AudioWave({setMusicData, musicData}) {
         // }
     }
 
+    const test = (e) => {
+        console.log(soundRef.current.currentTime)
+        setSongCurrentTime(e.target.currentTime)
+    }
+
+    const test2 = () => {
+        setSongCurrentTime("paused")
+    }
 
     return (
         <div className="upload">
             <input ref={inputRef} type="file" accept="audio/mp3" onInput={() => drawToCanvas()}></input>
             {/* <canvas ref={canvasRef} height="100"></canvas> */}
-            <audio ref={soundRef} id="sound" controls></audio>
+            <audio onPlay={(e) => test(e)} onPause={() => test2()} ref={soundRef} id="sound" controls></audio>
         </div>
     )
 }
