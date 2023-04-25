@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/SimplexNoise4Ddisplacement/static/css/main.f6b84fc0.css",
+    "main.js": "/SimplexNoise4Ddisplacement/static/js/main.eaff92d6.js",
+    "static/media/testda.hdr": "/SimplexNoise4Ddisplacement/static/media/testda.cbf44d5ec996f16468eb.hdr",
+    "static/media/star.png": "/SimplexNoise4Ddisplacement/static/media/star.0881dfa01d594021ae1a.png",
+    "index.html": "/SimplexNoise4Ddisplacement/index.html",
+    "main.f6b84fc0.css.map": "/SimplexNoise4Ddisplacement/static/css/main.f6b84fc0.css.map",
+    "main.eaff92d6.js.map": "/SimplexNoise4Ddisplacement/static/js/main.eaff92d6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f6b84fc0.css",
+    "static/js/main.eaff92d6.js"
+  ]
+}
