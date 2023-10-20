@@ -1,0 +1,64 @@
+.component {
+  height: 100vh;
+  background: #060508;
+  background: radial-gradient(circle, #060508 400px, black 100%);
+}
+
+.canvas {
+  height: 100%;
+  width: 100%;
+}
+
+.reset {
+    &_wrap {
+      position: absolute;
+      padding: 16px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      color: white;
+      &>span {
+        opacity: 0.2;
+        transform: translateY(-2px);
+      }
+    }
+
+    &_button {
+      height: 32px;
+      opacity: 0.2;
+      cursor: pointer;
+      z-index: 9;
+      &:hover {
+        opacity: 0.6;
+      }
+  }
+}
+
+.light_bg_effect {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #140424 400px, black 100%);
+}
+
+.button {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  padding: 4px 16px 8px 16px;
+  border: 3px solid white;
+  border-radius: 4px;
+  opacity: 0.75;
+  &:hover {
+      opacity: 1;
+  }
+}
+
+.loader {
+  z-index: 99;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}

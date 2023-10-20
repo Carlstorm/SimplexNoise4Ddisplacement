@@ -1,13 +1,12 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { useFrame, useThree } from '@react-three/fiber'
-import { BufferGeometry, MeshToonMaterial, PlaneGeometry, Vector3 } from 'three'
+import React, { useMemo, useRef } from 'react'
+import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three';
 import star from '../../../assets/textures/star.png'
 
 import MusicHandler from '../../../functions/MusicHandler';
 
 let starsData = []
-export default function Stars({musicData, songCurrentTime, soundRef}) {
+export default function Stars({musicData, soundRef}) {
     let g, pos
     const count = 300
     const mesh = useRef()

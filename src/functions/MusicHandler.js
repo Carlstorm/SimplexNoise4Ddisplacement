@@ -1,5 +1,3 @@
-import * as THREE from 'three';
-const clock = new THREE.Clock();
 let time = 0;
 
 const MusicHandler = {
