@@ -1,8 +1,11 @@
 import React, { useMemo, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three';
+
+// assets
 import star from '../../../assets/textures/star.png'
 
+// functions
 import MusicHandler from '../../../functions/MusicHandler';
 
 let starsData = []

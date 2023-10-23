@@ -1,15 +1,18 @@
 import { useRef, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
+
+// assets
+import Reset from './assets/svgs/Reset';
+import presetFile from './assets/audio/preset.mp3'
+
+// components
+import Loader from './componets/Loader/Loader';
 import Orb from './componets/three/Orb/Orb';
 import AudioPlayer from './componets/AudioPlayer/AudioPlayer';
 import Stars from './componets/three/stars/Stars'
-import Reset from './assets/svgs/Reset';
 
+// style 
 import style from './App.module.scss'
-
-
-import presetFile from './assets/audio/preset.mp3'
-import Loader from './componets/Loader/Loader';
 
 function App() {
   const appRef = useRef(null)

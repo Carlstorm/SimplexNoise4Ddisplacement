@@ -1,7 +1,9 @@
-import { useFrame } from "@react-three/fiber";
-import { Children, useEffect, useRef, useState } from "react";
+import {  useEffect, useState } from "react";
+
+// components
 import CustomAudioPlayer from "./CustomAudioPlayer";
 
+// style
 import style from './CustomAudioPlayer.module.scss'
 
 export default function AudioPlayer({setMusicData, musicData, children, soundRef}) {

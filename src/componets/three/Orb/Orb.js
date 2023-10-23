@@ -7,7 +7,7 @@ import { makeNoise2D } from "open-simplex-noise";
 
 // ENVIRONMENT
 import { useEnvironment } from '@react-three/drei';
-import hdr from '../../../assets/hdr/testnewja.hdr'
+import hdr from '../../../assets/hdr/env.hdr'
 
 // TEXTURES
 import MusicHandler from '../../../functions/MusicHandler';
